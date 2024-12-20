@@ -221,7 +221,7 @@ if(event.key=='Shift' || event.key=='CapsLock' || event.key=='Control' || event.
         return
      }
      if(textopt=='NUMBERS'){
-      settoggle((prev)=>!prev)
+   
    
           text.current=result.push(Math.floor(Math.random()*100))
           console.log(response)
