@@ -17,7 +17,12 @@ const db = new pg.Client({
 
 })
 db.connect();
-app.use(cors());
+app.use(cors({origin:['https://typing-test-website-2rjt.vercel.app/']
+             method:['POST','GET']
+              credentials:true
+}
+            
+            ));
 app.get('/numbers',(req,res)=>{
   let arr=paragraph().split(' ').slice(0,60)
  const result= []
