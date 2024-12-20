@@ -216,7 +216,7 @@ if(event.key=='Shift' || event.key=='CapsLock' || event.key=='Control' || event.
          if(textopt=='WORDS')
      {    
 
-      text.current=generateLongSentence(60)
+      text.current=generateLongSentence(40)
         settoggle((prev)=>!prev)
         return
      }
