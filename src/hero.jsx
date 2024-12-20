@@ -10,8 +10,7 @@ import {resultcontext } from "./context";
 import refresh from './assets/refresh.svg'
 import { faker } from "@faker-js/faker";
  function Hero() {
-
-
+axios.defaults.withCredentials= true
 
 // Function to generate a sentence of a specific length
 const generateLongSentence = (wordCount) => {
