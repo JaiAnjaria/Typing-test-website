@@ -32,7 +32,16 @@ const generateLongSentence = (wordCount) => {
 
 // Generate a sentence with 500 words
 const longSentence = generateLongSentence(45);
+let arr=paragraph().split(' ').slice(0,60)
+ const result= []
+ arr.map((words,index)=>{
+   result.push(words)
+  
+   if(index%Math.floor(Math.random()*10)==0){
+    result.push(Math.floor(Math.random()*100))
+   }
 
+ })
 
   const bannedWords = ["however", "have begun to rent"];
   const hero = useRef();
@@ -213,9 +222,8 @@ if(event.key=='Shift' || event.key=='CapsLock' || event.key=='Control' || event.
      }
      if(textopt=='NUMBERS'){
       settoggle((prev)=>!prev)
-      const response=await axios.get('https://typing-test-website-2rjt.vercel.app/numbers')
-          let numb=response.data.finaltxt
-          text.current=numb.toLowerCase().replace(punctuation,'')
+   
+          text.current=result.push(Math.floor(Math.random()*100))
           console.log(response)
           settoggle((prev)=>!prev)
           return
