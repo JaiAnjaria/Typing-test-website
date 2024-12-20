@@ -225,7 +225,7 @@ if(event.key=='Shift' || event.key=='CapsLock' || event.key=='Control' || event.
    
           text.current=result.push(Math.floor(Math.random()*100))
        
-          settoggle((prev)=>!prev)
+         
           return
      }
      if(textopt=='PUNCTUATION'){
