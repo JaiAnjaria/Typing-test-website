@@ -223,10 +223,9 @@ if(event.key=='Shift' || event.key=='CapsLock' || event.key=='Control' || event.
      if(textopt=='NUMBERS'){
      
    
-          text.current=result.push(Math.floor(Math.random()*100))
+          text.current=generateLongSentence(40)
+        settoggle((prev)=>!prev)
        
-         settoggle((prev)=>!prev)
-      settoggle((prev)=>!prev)
           return
      }
      if(textopt=='PUNCTUATION'){
