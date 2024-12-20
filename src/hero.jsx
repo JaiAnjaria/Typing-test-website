@@ -31,7 +31,7 @@ const generateLongSentence = (wordCount) => {
 };
 
 // Generate a sentence with 500 words
-const longSentence = generateLongSentence(50);
+const longSentence = generateLongSentence(45);
 
 
   const bannedWords = ["however", "have begun to rent"];
