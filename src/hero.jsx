@@ -31,7 +31,7 @@ const generateLongSentence = (wordCount) => {
 };
 
 // Generate a sentence with 500 words
-const longSentence = generateLongSentence(45);
+const longSentence = generateLongSentence(40);
 let arr=paragraph().split(' ').slice(0,60)
  const result= []
  arr.map((words,index)=>{
