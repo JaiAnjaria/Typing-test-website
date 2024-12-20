@@ -10,7 +10,18 @@ import {resultcontext } from "./context";
 import refresh from './assets/refresh.svg'
 import { faker } from "@faker-js/faker";
  function Hero() {
+let arr=paragraph().split(' ').slice(0,60)
+ const result= []
+ arr.map((words,index)=>{
+   result.push(words)
+  
+   if(index%Math.floor(Math.random()*10)==0){
+    result.push(Math.floor(Math.random()*100))
+   }
 
+ })
+
+result.join(' ').replace('However',generate())
 
 
 // Function to generate a sentence of a specific length
@@ -32,7 +43,7 @@ const generateLongSentence = (wordCount) => {
 };
 
 // Generate a sentence with 500 words
-const longSentence = generateLongSentence(50);
+const longSentence = generateLongSentence(40);
 
 
   const bannedWords = ["however", "have begun to rent"];
@@ -213,10 +224,9 @@ if(event.key=='Shift' || event.key=='CapsLock' || event.key=='Control' || event.
         return
      }
      if(textopt=='NUMBERS'){
+      
       settoggle((prev)=>!prev)
-      const response=await axios.get('http://localhost:3000/numbers')
-          let numb=response.data.finaltxt
-          text.current=numb.toLowerCase().replace(punctuation,'')
+          text.current=result.join(' ').replace('However',generate())
           console.log(response)
           settoggle((prev)=>!prev)
           return
