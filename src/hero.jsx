@@ -401,3 +401,8 @@ var correctwordslength=correctwords.join('').split(/\s+/).length
   );
 }
 export default Hero;
+
+
+  );
+}
+export default Hero;
