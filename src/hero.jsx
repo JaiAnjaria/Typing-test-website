@@ -214,7 +214,7 @@ if(event.key=='Shift' || event.key=='CapsLock' || event.key=='Control' || event.
      }
      if(textopt=='NUMBERS'){
       settoggle((prev)=>!prev)
-      const response=await axios.get('http://localhost:3000/numbers')
+      const response=await axios.get('https://typing-test-website-2rjt.vercel.app/numbers')
           let numb=response.data.finaltxt
           text.current=numb.toLowerCase().replace(punctuation,'')
           console.log(response)
@@ -224,7 +224,7 @@ if(event.key=='Shift' || event.key=='CapsLock' || event.key=='Control' || event.
      if(textopt=='PUNCTUATION'){
  
       settoggle((prev)=>!prev)
-      const response=await axios.get('http://localhost:3000/Punctuation')
+      const response=await axios.get('https://typing-test-website-2rjt.vercel.app/Punctuation')
           text.current=response.data.Ptext
           console.log(response)
           settoggle((prev)=>!prev)
