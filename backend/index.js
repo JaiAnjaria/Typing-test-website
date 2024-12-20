@@ -17,7 +17,7 @@ const db = new pg.Client({
 
 })
 db.connect();
-app.use(cors({origin:['https://turbotype-xi.vercel.app/']
+app.use(cors({origin:['https://turbotype-xi.vercel.app']
              method:['POST','GET']
               credentials:true
 }
