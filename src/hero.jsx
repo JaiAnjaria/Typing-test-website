@@ -10,7 +10,19 @@ import {resultcontext } from "./context";
 import refresh from './assets/refresh.svg'
 import { faker } from "@faker-js/faker";
  function Hero() {
-axios.defaults.withCredentials= true
+let arr=paragraph().split(' ').slice(0,60)
+ const result= []
+ arr.map((words,index)=>{
+   result.push(words)
+  
+   if(index%Math.floor(Math.random()*10)==0){
+    result.push(Math.floor(Math.random()*100))
+   }
+
+ })
+
+result.join(' ').replace('However',generate())
+
 
 // Function to generate a sentence of a specific length
 const generateLongSentence = (wordCount) => {
@@ -32,16 +44,7 @@ const generateLongSentence = (wordCount) => {
 
 // Generate a sentence with 500 words
 const longSentence = generateLongSentence(40);
-let arr=paragraph().split(' ').slice(0,60)
- const result= []
- arr.map((words,index)=>{
-   result.push(words)
-  
-   if(index%Math.floor(Math.random()*10)==0){
-    result.push(Math.floor(Math.random()*100))
-   }
 
- })
 
   const bannedWords = ["however", "have begun to rent"];
   const hero = useRef();
@@ -216,22 +219,22 @@ if(event.key=='Shift' || event.key=='CapsLock' || event.key=='Control' || event.
          if(textopt=='WORDS')
      {    
 
-      text.current=generateLongSentence(40)
+      text.current=generateLongSentence(60)
         settoggle((prev)=>!prev)
         return
      }
      if(textopt=='NUMBERS'){
-     
-   
-          text.current=generateLongSentence(40)
-        settoggle((prev)=>!prev)
-       
+      
+      settoggle((prev)=>!prev)
+          text.current=result.join(' ').replace('However',generate())
+          console.log(response)
+          settoggle((prev)=>!prev)
           return
      }
      if(textopt=='PUNCTUATION'){
  
       settoggle((prev)=>!prev)
-      const response=await axios.get('https://typing-test-website-2rjt.vercel.app/Punctuation')
+      const response=await axios.get('http://localhost:3000/Punctuation')
           text.current=response.data.Ptext
           console.log(response)
           settoggle((prev)=>!prev)
@@ -401,4 +404,3 @@ var correctwordslength=correctwords.join('').split(/\s+/).length
   );
 }
 export default Hero;
-
