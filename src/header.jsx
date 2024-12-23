@@ -7,7 +7,7 @@ export default function Header(props){
   const [navindex,statenav]=useState();
   const val=useContext(counterContext)
 
-  const navItems = ["WORDS", "PUNCTUATION", "QUOTES", "NUMBERS"];
+  const navItems = ["WORDS",  "NUMBERS"];
  function handlechange(event){
 const timeselected=event.target.value;
 props.ontimechange(timeselected);
@@ -45,7 +45,7 @@ function handlenavclick(event,index){
          color:val?undefined
          : navindex === index ? "black" : undefined}}  key={index} onClick={(event) => handlenavclick(event, index)}>{item}</div>) } 
                                        
-                                       
+                              
                                         </div>
                                         <div>
                                         <div onMouseEnter={()=>hstate(true)}
