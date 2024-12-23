@@ -10,7 +10,7 @@ import {resultcontext } from "./context";
 import refresh from './assets/refresh.svg'
 import { faker } from "@faker-js/faker";
  function Hero() {
-let arr=paragraph().split(' ').slice(0,40)
+let arr=paragraph().split(' ').slice(0,50)
  const result= []
  arr.map((words,index)=>{
    result.push(words)
