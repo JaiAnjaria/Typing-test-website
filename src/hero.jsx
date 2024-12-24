@@ -81,10 +81,7 @@ const longSentence = generateLongSentence(40);
     boxShadow: "0 2px #000, 0 6px 10px rgba(0, 0, 0, 0.7)", // Use camelCase for box-shadow
     backgroundColor: "#555", // Use camelCase for background-color
   };
-  window.addEventListener('load', function() {
-    document.getElementById('loader').style.display = 'none';
-    document.getElementById('content').style.display = 'block';
-});
+ 
   if (expbool) {
 
     hero.current.style.filter = "blur(5px)"; // Apply blur when expbool is true
