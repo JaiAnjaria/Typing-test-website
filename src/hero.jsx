@@ -230,6 +230,10 @@ if(event.key=='Shift' || event.key=='CapsLock' || event.key=='Control' || event.
      }
     // Rendering logic as before...
   }
+   function refreshimg(){
+  location.reload();
+
+ }
   function charcheck(event) {
     // Character checking logic...
     const arr= text.current.split('')
@@ -298,6 +302,7 @@ var correctwordslength=correctwords.join('').split(/\s+/).length
             : undefined:undefined // Default for untyped characters
           } key={index}  >{char}</span>
         )}</div></div>
+           <img onClick={refreshimg} className='refresh'src={refresh}></img>
       
       </div>
 
