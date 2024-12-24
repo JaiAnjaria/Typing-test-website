@@ -303,9 +303,7 @@ var correctwordslength=correctwords.join('').split(/\s+/).length
       </div>
 
 <body>
-<div id="loader">
-        <div class="spinner"></div>
-    </div>
+
 
        <div className="keyboard h-0">
   <div className="row flex justify-center">
