@@ -272,10 +272,7 @@ if(event.key=='Shift' || event.key=='CapsLock' || event.key=='Control' || event.
       window.removeEventListener("keydown", handleKeyDown);
     };
   }, [textindex]);
- function refreshimg(){
-  location.reload();
 
- }
 var wordslength=text.current.length-1
 console.log(wordslength)
 var correctwordslength=correctwords.join('').split(/\s+/).length
