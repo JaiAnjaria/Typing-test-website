@@ -12,7 +12,10 @@ import { faker } from "@faker-js/faker";
  function Hero() {
 let arr=paragraph().split(' ').slice(0,50)
  const result= []
- arr.map((words,index)=>{
+  function loader()
+  {}
+  
+  arr.map((words,index)=>{
    result.push(words)
   
    if(index%Math.floor(Math.random()*10)==0){
