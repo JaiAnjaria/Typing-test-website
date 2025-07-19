@@ -9,10 +9,15 @@ import { counterContext } from "./context";
 import {resultcontext } from "./context";
 import refresh from './assets/refresh.svg'
 import { faker } from "@faker-js/faker";
+import Chatbot from "./Chatbot";
  function Hero() {
-let arr=paragraph().split(' ').slice(0,60)
+
+let arr=paragraph().split(' ').slice(0,50)
  const result= []
- arr.map((words,index)=>{
+  function loader()
+  {}
+  
+  arr.map((words,index)=>{
    result.push(words)
   
    if(index%Math.floor(Math.random()*10)==0){
@@ -23,11 +28,11 @@ let arr=paragraph().split(' ').slice(0,60)
 
 result.join(' ').replace('However',generate())
 
-
 // Function to generate a sentence of a specific length
 const generateLongSentence = (wordCount) => {
   const usedWords = new Set(); // To track used words
   const sentence = [];
+  
 
   for (let i = 0; i < wordCount; i++) {
     let word;
@@ -43,9 +48,9 @@ const generateLongSentence = (wordCount) => {
 };
 
 // Generate a sentence with 500 words
-const longSentence = generateLongSentence(40);
+const longSentence = generateLongSentence(45);
 
-
+result.join(' ').replace('However',generate())
   const bannedWords = ["however", "have begun to rent"];
   const hero = useRef();
   const whole=useRef();
@@ -58,23 +63,11 @@ const longSentence = generateLongSentence(40);
   const [textindex,handletxt]=useState(0)
   const [correctchar,correctcharcheck]=useState(0)
   const [correctwords, setCorrectwords] = useState([]);
-
+  const [incorrectwords,setincorrectwords]=useState([])
 
 
   let punctuation = /[.,\/#!$%\^&\*;:{}=\-_`~()?'"]/g;
-  document.onreadystatechange = function () {
-            if (document.readyState !== "complete") {
-                document.querySelector(
-                    "body").style.visibility = "hidden";
-                document.querySelector(
-                    "#loader").style.visibility = "visible";
-            } else {
-                document.querySelector(
-                    "#loader").style.display = "none";
-                document.querySelector(
-                    "body").style.visibility = "visible";
-            }
-        };
+
   // Handle styling for key press
   const Keypresstyle = {
     transform: "translateY(3px)",
@@ -165,7 +158,8 @@ const longSentence = generateLongSentence(40);
     if(event.key=="Backspace"){
     return
     }
-if(event.key=='Shift' || event.key=='CapsLock' || event.key=='Control' || event.key=='Enter' || event.key=='ArrowUp' || event.key=='ArrowDown' || event.key=='ArrowRight'|| event.key=='ArrowLeft'){
+if(event.key=='Shift' || event.key=='CapsLock' || event.key=='Control' || event.key=='Enter' || 
+  event.key=='ArrowUp' || event.key=='ArrowDown' || event.key=='ArrowRight'|| event.key=='ArrowLeft'){
   return
 }
 
@@ -178,7 +172,7 @@ if(event.key=='Shift' || event.key=='CapsLock' || event.key=='Control' || event.
       handletxt((prevIndex) => prevIndex + 1); // Move to next index
 
     } else {
-      
+      setincorrectwords((prev)=>[...prev,event.key])
       setIncorrectIndices((prev) => [...prev, textindex]); 
       handletxt((prevIndex) => prevIndex + 1);
      
@@ -187,6 +181,8 @@ if(event.key=='Shift' || event.key=='CapsLock' || event.key=='Control' || event.
     // Optional: Test completion
     if (textindex + 1 === text.current.length) {
       console.log("Test completed!");
+      setExpbool(true)       
+      statechanger(true)
     }
 
 
@@ -219,22 +215,22 @@ if(event.key=='Shift' || event.key=='CapsLock' || event.key=='Control' || event.
          if(textopt=='WORDS')
      {    
 
-      text.current=generateLongSentence(60)
+      text.current=generateLongSentence(40)
         settoggle((prev)=>!prev)
         return
      }
      if(textopt=='NUMBERS'){
-      
       settoggle((prev)=>!prev)
-          text.current=result.join(' ').replace('However',generate())
+   
+          text.current=result.join(' ').replace("However",generate())
           console.log(response)
           settoggle((prev)=>!prev)
           return
      }
      if(textopt=='PUNCTUATION'){
- 
+
       settoggle((prev)=>!prev)
-      const response=await axios.get('http://localhost:3000/Punctuation')
+      const response=await axios.get('https://typing-test-website-2rjt.vercel.app/Punctuation')
           text.current=response.data.Ptext
           console.log(response)
           settoggle((prev)=>!prev)
@@ -257,7 +253,8 @@ if(event.key=='Shift' || event.key=='CapsLock' || event.key=='Control' || event.
   // Handle keyup event
   function handleKeyUp(event) {
     const keyPressed = event.key.toLowerCase();
-
+    const newarr=[]
+    newarr.push(keyPressed)
     setKeyState((prevState) => ({
       ...prevState,
       [keyPressed]: false,
@@ -300,8 +297,9 @@ var correctwordslength=correctwords.join('').split(/\s+/).length
       <resultcontext.Provider value={{resultstate,statechanger}} >
       <Header ontimechange={timeupdate} onclick={textrender} />
       <div  ref={whole}className="hero  px-40 pt-20">
-        <Time time={time} setExpbool={setExpbool}  wordchanger={wordchanger}
+        <Time allwords={text.current}correctword={correctwords}time={time} setExpbool={setExpbool}  wordchanger={wordchanger}
         correctchar={correctchar} textindex={textindex} correctwordslength={correctwordslength} expbool={expbool}/>
+        {resultstate?<Chatbot  allwords={text.current} correctword={correctwords} incorrectwords={incorrectwords}/>:null}
        <div className="herodiv px-8">
         <div ref={hero}>{text.current.split('').map((char,index)=>
           <span className={!expbool?incorrectIndices.includes(index)
@@ -313,12 +311,15 @@ var correctwordslength=correctwords.join('').split(/\s+/).length
             : undefined:undefined // Default for untyped characters
           } key={index}  >{char}</span>
         )}</div></div>
+       
         <img onClick={refreshimg} className='refresh'src={refresh}></img>
      
       </div>
 
 <body>
+    
 <div id="loader">
+    
         <div class="spinner"></div>
     </div>
 
