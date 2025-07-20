@@ -64,6 +64,7 @@ result.join(' ').replace('However',generate())
   const [correctchar,correctcharcheck]=useState(0)
   const [correctwords, setCorrectwords] = useState([]);
   const [incorrectwords,setincorrectwords]=useState([])
+  const [testStarted, setTestStarted] = useState(false);
 
 
   let punctuation = /[.,\/#!$%\^&\*;:{}=\-_`~()?'"]/g;
@@ -162,7 +163,9 @@ if(event.key=='Shift' || event.key=='CapsLock' || event.key=='Control' || event.
   event.key=='ArrowUp' || event.key=='ArrowDown' || event.key=='ArrowRight'|| event.key=='ArrowLeft'){
   return
 }
-
+if (!testStarted || event.key!="Backspace"){
+setTestStarted(true)
+}
     if (event.key === currentChar) {
       correctcharcheck((prevchar)=>prevchar+1)
    setCorrectwords((prev)=>[...prev,event.key])
@@ -295,9 +298,9 @@ var correctwordslength=correctwords.join('').split(/\s+/).length
     <>
     <counterContext.Provider value={word} >
       <resultcontext.Provider value={{resultstate,statechanger}} >
-      <Header ontimechange={timeupdate} onclick={textrender} />
+      <Header ontimechange={timeupdate} onclick={textrender} testStarted={testStarted} />
       <div  ref={whole}className="hero  px-40 pt-20">
-        <Time allwords={text.current}correctword={correctwords}time={time} setExpbool={setExpbool}  wordchanger={wordchanger}
+        <Time testStarted={testStarted} setTestStarted={setTestStarted} allwords={text.current}correctword={correctwords}time={time} setExpbool={setExpbool}  wordchanger={wordchanger}
         correctchar={correctchar} textindex={textindex} correctwordslength={correctwordslength} expbool={expbool}/>
         {resultstate?<Chatbot  allwords={text.current} correctword={correctwords} incorrectwords={incorrectwords}/>:null}
        <div className="herodiv px-8">

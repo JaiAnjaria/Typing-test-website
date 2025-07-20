@@ -9,7 +9,9 @@ export default function Time({
   correctchar,
   textindex,
   correctwordslength,
-  expbool
+  expbool,
+  testStarted,
+  setTestStarted
 }) {
   const [newtime, setNewTime] = useState(time);
   const [check, done] = useState(false);
@@ -32,6 +34,7 @@ export default function Time({
             clearInterval(intervalId);
             statechanger(true); // Show result
             setExpbool(true); // Mark test as finished
+            setTestStarted(false)
           }
           return prevTime - 1;
         });

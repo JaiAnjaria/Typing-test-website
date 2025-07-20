@@ -6,7 +6,7 @@ export default function Header(props){
   const [sec,newsec]=useState(1)
   const [navindex,statenav]=useState();
   const val=useContext(counterContext)
-
+  
   const navItems = ["WORDS", "NUMBERS"];
  function handlechange(event){
 const timeselected=event.target.value;
@@ -22,11 +22,11 @@ function handlenavclick(event,index){
   function secoptions(){
 
   return(
-   <> <select onChange={handlechange}className='select'>
+   <> <select onChange={handlechange}   className={`select ${props.testStarted ? "disabled-select" : ""}`}>
     <option className="select-option" value=""
       >select</option>
-    <option className="select-option" value="30"
-      >30</option>
+    <option className="select-option" value="2"
+      >2</option>
     <option className="select-option"  value="60">60</option>
     <option className="select-option"  value="90">90</option>
 
@@ -39,9 +39,9 @@ function handlenavclick(event,index){
    <div className="navbar">
      <div className='flex w-3/4 uppercase   justify-between align-center py-2 mr-62 px-5 nav-bel mt-8 '>
       <div className='flex  ' ><div className='font-medium text-3xl'>TURBOTYPE</div>  </div> 
-                              <div  className='flex  optt'>
+                              <div   className={`flex optt ${props.testStarted ? "nav-disabled" : ""}`}>
 
-                              {navItems.map((item,index)=> <div style={{backgroundColor:val?undefined: navindex === index ? "white" : undefined, // Active div gets blue color
+                              {  navItems.map((item,index)=> <div style={{backgroundColor:val?undefined: navindex === index ? "white" : undefined, // Active div gets blue color
          color:val?undefined
          : navindex === index ? "black" : undefined}}  key={index} onClick={(event) => handlenavclick(event, index)}>{item}</div>) } 
                                        
