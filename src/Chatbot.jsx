@@ -32,7 +32,10 @@ function Chatbot({allwords,correctword,incorrectwords}) {
                   text: `Here is a typing test result:
                   here are ${allwords}  
  Correct words: ${correctword?correctword:"empty"}  
- Incorrect words: ${incorrectwords}  Write a clear, organized, feedback how you can improve typing speed and accuracy based on provided data give 5-6 sentences.Be honest and brutal no humble but dont be rude if the gave good test appreciate  IF there is no words in correct words or a particular letter is been typed repeatedly then give response "  your test seems to have been attempted incorrectly. Please reattempt with genuine effort and varied typing. "`,
+ Incorrect words: ${incorrectwords}  Write a clear, organized, feedback how you can 
+ improve typing speed and accuracy based on provided data give 5-6 sentences
+ .Be honest  dont be rude if they gave good test appreciate  IF there is no 
+ words in correct words or a particular letter is been typed repeatedly then give response "  your test seems to have been attempted incorrectly. Please reattempt with genuine effort and varied typing. "`,
                 },
               ],
             },
