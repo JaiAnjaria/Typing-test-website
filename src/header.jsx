@@ -25,8 +25,8 @@ function handlenavclick(event,index){
    <> <select onChange={handlechange}   className={`select ${props.testStarted ? "disabled-select" : ""}`}>
     <option className="select-option" value=""
       >select</option>
-    <option className="select-option" value="2"
-      >2</option>
+    <option className="select-option" value="30"
+      >30</option>
     <option className="select-option"  value="60">60</option>
     <option className="select-option"  value="90">90</option>
 
